@@ -79,6 +79,11 @@ public class MovieRepository implements MovieService{
 	public List<MovieDto> getGenreMovieList() {
 		return movieDtos;
 	}
+	@Override
+	public List<MovieDto> getMovieRanking() {
+		return movieDtos;
+	}
+	
 	private void saveData() {
 		try (PrintWriter writer = new PrintWriter(new FileWriter("movie_data.txt"))){
 			for(MovieDto movieDto : movieDtos) {
@@ -106,9 +111,10 @@ public class MovieRepository implements MovieService{
 			}
 			nextNumber = maxNumber + 1 ;
 		} catch (Exception e) {
-			System.out.println("게임 데이터 파일이 없습니다. 새로운 파일을 생성합니다.");
+			System.out.println("영화 리뷰 데이터 파일이 없습니다. 새로운 파일을 생성합니다.");
 		}
 	}
+
 
 
 

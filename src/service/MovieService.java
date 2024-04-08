@@ -17,4 +17,6 @@ public interface MovieService {
 	public List<MovieDto> getRatingMovieList();
 	
 	public List<MovieDto> getGenreMovieList();
+	
+	public List<MovieDto> getMovieRanking();
 }

@@ -48,6 +48,10 @@ public class MovieController {
 				// 해당하는 장르 list 보여주기
 				getGenreMovieList();
 				break;
+			case 7:
+				// 랭킹 출력
+				getMovieRanking();
+				break;
 			default:
 				System.out.println("시스템에 없는 메뉴를 선택하였습니다. 다른 메뉴를 선택 부탁드립니다.");
 				break;
@@ -82,5 +86,12 @@ public class MovieController {
 	public void getGenreMovieList() {
 		movieView.getGenreMovieList(movieService.getGenreMovieList());
 	}
+	
+	// 순위(가장 많이 본 장르와 별점 순위)
+	
+	public void getMovieRanking() {
+		movieView.movieRanking(movieService.getMovieRanking());
+	}
+	
 	
 }

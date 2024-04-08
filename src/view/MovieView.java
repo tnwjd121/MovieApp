@@ -1,7 +1,12 @@
 package view;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import dto.MovieDto;
 import service.MovieService;
@@ -25,6 +30,7 @@ public class MovieView {
 		System.out.println("----------------------------------  4: 영화 리뷰 삭제   ----------------------------------");
 		System.out.println("----------------------------------  5: 영화 별점 리스트  ----------------------------------");
 		System.out.println("----------------------------------  6: 영화 장르 리스트  ----------------------------------");
+		System.out.println("----------------------------------  7: 영화 랭킹 리스트  ----------------------------------");
 		System.out.println("======================================================================================");
 		System.err.print("Choice Menu: ");
 		int selectNumber = -1;
@@ -116,5 +122,19 @@ public class MovieView {
 		}
 		System.out.println("======================================================================================");
 	}
-
+	
+	public void movieRanking(List<MovieDto>movieDtos) {
+		System.out.println("==================================== Movie Ranking ===================================");
+		Collections.sort(movieDtos, Comparator.comparingInt(MovieDto::getRating).reversed());
+		System.out.println("별점 랭킹");
+		for(int i=0; i<3; i++) {
+			System.out.println((i+1)+"위: "+ movieDtos.get(i).getMovieName() + "(" + movieDtos.get(i).getRating()+"점)");
+		}
+		System.out.println("장르 랭킹");
+		Map<String, Integer> countGenre = new HashMap<>();
+		
+		
+		
+		
+	}
 }
