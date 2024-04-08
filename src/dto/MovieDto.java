@@ -7,6 +7,10 @@ public class MovieDto {
 	private String genre;
 	private int rating;
 	private String review;
+	
+	public MovieDto() {
+	}
+	
 	public int getMovieNumber() {
 		return movieNumber;
 	}
