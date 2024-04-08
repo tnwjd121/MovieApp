@@ -53,8 +53,8 @@ public class MovieDto {
 	}
 	@Override
 	public String toString() {
-		return "MovieDto [movieNumber=" + movieNumber + ", movieName=" + movieName + ", genre=" + genre + ", rating="
-				+ rating + ", review=" + review + "]";
+		return "[영화번호: " + movieNumber + ", 영화명: " + movieName + ", 장르 :" + genre + ", 별점 :"
+				+ rating + ", 한줄평 : " + review + "]";
 	}
 	
 	

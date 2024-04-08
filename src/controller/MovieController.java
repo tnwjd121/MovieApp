@@ -20,6 +20,9 @@ public class MovieController {
 			selectNumber = movieView.getMenu();
 			switch (selectNumber) {
 			case 0:
+				System.out.println("======================================================================================");
+				System.out.println("===================================== App Close ======================================");
+				System.out.println("======================================================================================");
 				return;
 			case 1: 
 				// 리뷰 등록

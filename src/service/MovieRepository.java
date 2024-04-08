@@ -48,7 +48,7 @@ public class MovieRepository implements MovieService{
 			saveData();
 			System.out.println("영화리뷰가 성공적으로 업데이트되었습니다.");
 		}else {
-			System.out.println("번호에 해당하는 영화리뷰가 없습니다.");
+			System.out.println("해당 번호의 영화리뷰를 찾을 수 없습니다.");
 		}
 		
 	}
@@ -65,8 +65,11 @@ public class MovieRepository implements MovieService{
 			movieDtos.remove(movieDelete);
 			saveData();
 			System.out.println("영화 리뷰가 성공적으로 삭제되었습니다.");
-		}
+			System.out.println("======================================================================================");
+		}else {
 		System.out.println("해당 번호의 영화리뷰를 찾을 수 없습니다.");
+		System.out.println("======================================================================================");
+		}
 	}
 	@Override
 	public List<MovieDto> getRatingMovieList() {
