@@ -126,11 +126,30 @@ public class MovieView {
 	
 	public void movieRanking(List<MovieDto>movieDtos) {
 		System.out.println("==================================== Movie Ranking ===================================");
-		Collections.sort(movieDtos, Comparator.comparingInt(MovieDto::getRating).reversed());
 		System.out.println("별점 랭킹");
-		for(int i=0; i<3; i++) {
-			System.out.println((i+1)+"위: "+ movieDtos.get(i).getMovieName() + "(" + movieDtos.get(i).getRating()+"점)");
+		Map<Integer, List<MovieDto>> ratingMap = new HashMap<>();
+		for(MovieDto movieDto : movieDtos) {
+			int rating = movieDto.getRating();
+			List<MovieDto> movies = ratingMap.getOrDefault(rating, new ArrayList<MovieDto>());
+			movies.add(movieDto);
+			ratingMap.put(rating, movies);
 		}
+		List<Integer> ratings = new ArrayList<>(ratingMap.keySet());
+		Collections.sort(ratings,Collections.reverseOrder());
+		
+	    for (int i = 0; i < ratings.size(); i++) {
+	        int rating = ratings.get(i);
+	        List<MovieDto> movies = ratingMap.get(rating);
+	        System.out.print((i + 1) + "위: " + rating + "점 (");
+	        for (int j = 0; j < movies.size(); j++) {
+	            System.out.print(movies.get(j).getMovieName());
+	            if (j < movies.size() - 1) {
+	                System.out.print(", ");
+	            }
+	        }
+	        System.out.println(")");
+		}
+		
 		System.out.println("--------------------------------------------------------------------------------------");
 		System.out.println("장르 랭킹");
 		List<String> genre = new ArrayList<>();
