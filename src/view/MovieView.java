@@ -9,6 +9,8 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+import javax.print.DocFlavor.STRING;
+
 import dto.MovieDto;
 import service.MovieService;
 
@@ -152,21 +154,29 @@ public class MovieView {
 		
 		System.out.println("--------------------------------------------------------------------------------------");
 		System.out.println("장르 랭킹");
-		List<String> genre = new ArrayList<>();
-		for(int i=0; i<movieDtos.size(); i++) {
-			genre.add(movieDtos.get(i).getGenre());
-		}
-		Map<String, Integer> countMap = new HashMap<>();
-		for(String str : genre) {
-			countMap.put(str, countMap.getOrDefault(str, 0)+1);
-		}
-		List<Map.Entry<String, Integer>> sortedList = new ArrayList<>(countMap.entrySet());
-		sortedList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
-	
-        for(int i = 0; i<3; i++) {
-        	Map.Entry<String, Integer> entry = sortedList.get(i);
-        	System.out.println((i+1) + "위: "+ entry.getKey() + "(" + entry.getValue() + "개)");
-        }
+		Map<String, List<MovieDto>>genreMap = new HashMap<>();
 		
+		for(MovieDto movieDto : movieDtos) {
+			String genre = movieDto.getGenre();
+			List<MovieDto> moviesByGenre = genreMap.getOrDefault(genre, new ArrayList<>());
+			moviesByGenre.add(movieDto);
+			genreMap.put(genre, moviesByGenre);
+		}
+		List<String> genres = new ArrayList<>(genreMap.keySet());
+		Collections.sort(genres, (g1,g2) -> Integer.compare(genreMap.get(g2).size(), genreMap.get(g1).size()));
+		
+	    for (int i = 0; i < genres.size(); i++) {
+	        String genre = genres.get(i);
+	        List<MovieDto> movies = genreMap.get(genre);
+	        System.out.print((i + 1) + "위: " + genre + " (");
+	        for (int j = 0; j < movies.size(); j++) {
+	            System.out.print(movies.get(j).getMovieName());
+	            if (j < movies.size() - 1) {
+	                System.out.print(", ");
+	            }
+	        }
+	        System.out.println(")");
+	    }
+
 	}
 }
