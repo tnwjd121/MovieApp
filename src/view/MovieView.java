@@ -1,5 +1,6 @@
 package view;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -130,11 +131,23 @@ public class MovieView {
 		for(int i=0; i<3; i++) {
 			System.out.println((i+1)+"위: "+ movieDtos.get(i).getMovieName() + "(" + movieDtos.get(i).getRating()+"점)");
 		}
+		System.out.println("--------------------------------------------------------------------------------------");
 		System.out.println("장르 랭킹");
-		Map<String, Integer> countGenre = new HashMap<>();
-		
-		
-		
+		List<String> genre = new ArrayList<>();
+		for(int i=0; i<movieDtos.size(); i++) {
+			genre.add(movieDtos.get(i).getGenre());
+		}
+		Map<String, Integer> countMap = new HashMap<>();
+		for(String str : genre) {
+			countMap.put(str, countMap.getOrDefault(str, 0)+1);
+		}
+		List<Map.Entry<String, Integer>> sortedList = new ArrayList<>(countMap.entrySet());
+		sortedList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+	
+        for(int i = 0; i<3; i++) {
+        	Map.Entry<String, Integer> entry = sortedList.get(i);
+        	System.out.println((i+1) + "위: "+ entry.getKey() + "(" + entry.getValue() + "개)");
+        }
 		
 	}
 }

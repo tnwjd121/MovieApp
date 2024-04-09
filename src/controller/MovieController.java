@@ -21,7 +21,7 @@ public class MovieController {
 			switch (selectNumber) {
 			case 0:
 				System.out.println("======================================================================================");
-				System.out.println("===================================== App Close ======================================");
+				System.out.println("=                                     App Close                                      =");
 				System.out.println("======================================================================================");
 				return;
 			case 1: 
