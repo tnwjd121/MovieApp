@@ -71,18 +71,6 @@ public class MovieRepository implements MovieService{
 		System.out.println("======================================================================================");
 		}
 	}
-	@Override
-	public List<MovieDto> getRatingMovieList() {
-		return movieDtos;
-	}
-	@Override
-	public List<MovieDto> getGenreMovieList() {
-		return movieDtos;
-	}
-	@Override
-	public List<MovieDto> getMovieRanking() {
-		return movieDtos;
-	}
 	
 	private void saveData() {
 		try (PrintWriter writer = new PrintWriter(new FileWriter("movie_data.txt"))){

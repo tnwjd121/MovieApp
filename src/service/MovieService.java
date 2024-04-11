@@ -14,9 +14,4 @@ public interface MovieService {
 	
 	public void deleteMovie(int index);
 	
-	public List<MovieDto> getRatingMovieList();
-	
-	public List<MovieDto> getGenreMovieList();
-	
-	public List<MovieDto> getMovieRanking();
 }

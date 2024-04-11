@@ -80,17 +80,17 @@ public class MovieController {
 	}
 	
 	public void getRatingMovieList() {
-		movieView.getRatingMovieList(movieService.getRatingMovieList());
+		movieView.getRatingMovieList(movieService.getMovieList());
 	}
 	
 	public void getGenreMovieList() {
-		movieView.getGenreMovieList(movieService.getGenreMovieList());
+		movieView.getGenreMovieList(movieService.getMovieList());
 	}
 	
 	// 순위(가장 많이 본 장르와 별점 순위)
 	
 	public void getMovieRanking() {
-		movieView.movieRanking(movieService.getMovieRanking());
+		movieView.movieRanking(movieService.getMovieList());
 	}
 	
 	
