@@ -116,6 +116,7 @@ public class MovieView {
 	}
 	public void getGenreMovieList(List<MovieDto>movieDtos) {
 		System.out.println("================================== Movie Genre List =================================");
+		System.out.println("장르 종류: 판타지, 액션, 코미디, 애니메이션, 미스터리, 공포, 드라마, 범죄, 스릴러");
 		System.out.print("장르: ");
 		String findGenre = sc.nextLine();
 		for(MovieDto movieDto : movieDtos) {
